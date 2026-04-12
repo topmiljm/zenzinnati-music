@@ -3,7 +3,7 @@
     "id": "a-tape",
     "title": "A Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/a-tape.jpg",
+    "cover": "/covers/A-Tape.jpg",
     "totalDuration": 2471,
     "tracks": [
       {
@@ -84,7 +84,7 @@
     "id": "b-tape",
     "title": "B Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/b-tape.jpg",
+    "cover": "/covers/B-Tape.jpg",
     "totalDuration": 2033,
     "tracks": [
       {
@@ -165,7 +165,7 @@
     "id": "beauty",
     "title": "Beauty",
     "artist": "Zen Zinnati",
-    "cover": "/covers/beauty.jpg",
+    "cover": "/covers/Beauty.jpg",
     "totalDuration": 1967,
     "tracks": [
       {
@@ -234,7 +234,7 @@
     "id": "c-tape",
     "title": "C Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/c-tape.jpg",
+    "cover": "/covers/C-Tape.jpg",
     "totalDuration": 2713,
     "tracks": [
       {
@@ -327,7 +327,7 @@
     "id": "d-tape",
     "title": "D Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/d-tape.jpg",
+    "cover": "/covers/D-Tape.jpg",
     "totalDuration": 2536,
     "tracks": [
       {
@@ -420,7 +420,7 @@
     "id": "e-tape",
     "title": "E Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/e-tape.jpg",
+    "cover": "/covers/E-Tape.jpg",
     "totalDuration": 2792,
     "tracks": [
       {
@@ -513,7 +513,7 @@
     "id": "nite-walk",
     "title": "Nite Walk",
     "artist": "Zen Zinnati",
-    "cover": "/covers/nite-walk.jpg",
+    "cover": "/covers/Nite-Walk.jpg",
     "totalDuration": 2503,
     "tracks": [
       {
@@ -594,7 +594,7 @@
     "id": "the-neighborhood-changed",
     "title": "The Neighborhood Changed",
     "artist": "Zen Zinnati",
-    "cover": "/covers/the-neighborhood-changed.jpg",
+    "cover": "/covers/The-Neighborhood-Changed.jpg",
     "totalDuration": 1993,
     "tracks": [
       {
@@ -663,7 +663,7 @@
     "id": "the-'09-dreamer-phase-tape",
     "title": "The '09 Dreamer Phase Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/the-'09-dreamer-phase-tape.jpg",
+    "cover": "/covers/The-'09-Dreamer-Phase-Tape.jpg",
     "totalDuration": 2975,
     "tracks": [
       {
@@ -762,7 +762,7 @@
     "id": "the-menahan-street-nyc-tape",
     "title": "The Menahan Street NYC Tape",
     "artist": "Zen Zinnati",
-    "cover": "/covers/the-menahan-street-nyc-tape.jpg",
+    "cover": "/covers/The-Menahan-Street-NYC-Tape.jpg",
     "totalDuration": 2384,
     "tracks": [
       {

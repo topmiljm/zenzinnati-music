@@ -46,6 +46,8 @@ const customDurations = {
     "Alone I Dream": 166,
     "Good Talk": 209,
     "All of That Tea": 177,
+    "Drunk Kids Make Love": 178,
+    "Dark Sunglasses": 191,
   },
   "C Tape": {
     "Record A Song For You": 237,

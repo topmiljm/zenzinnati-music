@@ -1,3 +1,8 @@
+// ⚠️ WARNING:
+// This script may overwrite src values in albums.json.
+// Cloudinary URLs should be verified after running.
+
+
 const fs = require("fs");
 const path = require("path");
 

@@ -85,7 +85,7 @@
     "title": "B Tape",
     "artist": "Zen Zinnati",
     "cover": "/covers/B-Tape.jpg",
-    "totalDuration": 2033,
+    "totalDuration": 2428,
     "tracks": [
       {
         "id": "1",
@@ -155,6 +155,18 @@
       },
       {
         "id": "12",
+        "title": "Inside Job",
+        "src": "https://res.cloudinary.com/dzgkd8k4j/video/upload/q_auto/f_auto/v1776452981/12.Inside_Job_vi1hun.wav",
+        "duration": 221
+      },
+      {
+        "id": "13",
+        "title": "Divert Your Attention",
+        "src": "https://res.cloudinary.com/dzgkd8k4j/video/upload/q_auto/f_auto/v1776452979/13.Divert_Your_Attention_lbwwyl.wav",
+        "duration": 174
+      },
+      {
+        "id": "14",
         "title": "Looking At A Star",
         "src": "https://res.cloudinary.com/dzgkd8k4j/video/upload/q_auto/f_auto/v1775966675/12.Looking_At_A_Star_pea4kt.wav",
         "duration": 264

@@ -140,7 +140,7 @@ The project spans about a half decade of recordings, capturing a unique blend of
 
 ## 🔮 Future Improvements
 
-* 🔐 User accounts / favorites
+* 🔐 Merchandise E-commerce feature with possible user accounts / favorites
 * 📱 Progressive Web App (PWA)
 * 🎚️ Better mobile background playback
 * ☁️ Fully automated Cloudinary sync

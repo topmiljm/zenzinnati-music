@@ -18,6 +18,16 @@ A Frontend music streaming web app showcasing the discography of **Zen Zinnati**
 
 ---
 
+## Screenshots
+
+![Screenshot 1](Screenshots/Screenshot 1.jpg)
+![Screenshot 2](Screenshots/Screenshot 2.jpg)
+![Screenshot 3](Screenshots/Screenshot 3.jpg)
+![Screenshot 4](Screenshots/Screenshot 4.jpg)
+![Screenshot 5](Screenshots/Screenshot 5.jpg)
+
+---
+
 ## 🛠️ Tech Stack
 
 * **Frontend:** React, React Router

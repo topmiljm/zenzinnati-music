@@ -11,7 +11,7 @@ const About = () => {
         Named after Cincinnati's world famous Octoberfest 'Zinzinnati' celebration and the Zen philosophy of mindfulness and simplicity,
         Zen Zinnati's music is a blend of electronic, hip hop, indie, and experimental sounds.
         Primarily active in the early 2010's, Zen Zinnati's discography includes 10 albums/mixtapes and a deep vault of unreleased instrumentals
-        created over a span of just 5 years from 2009-2014.
+        created over a span of just 5 years from 2010-2015.
       </p>
 
       <p>

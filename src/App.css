@@ -180,6 +180,25 @@ body {
   border: 0.1px solid rgb(55, 51, 51);
 }
 
+/* ==================== MERCH PAGE ==================== */
+
+.merch-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.merch-page h1 {
+  margin-bottom: 20px;
+}
+
+.merch-page p {
+  margin-bottom: 15px;
+  color: #b3b3b3;
+}
+
 
 /* ==================== ALBUM PAGE ==================== */
 .album-page {

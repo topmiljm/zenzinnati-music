@@ -12,6 +12,9 @@ const Sidebar = ({ isOpen, closeSidebar, currentAlbum, albums }) => {
       <NavLink to="/about" onClick={closeSidebar}>
         About
       </NavLink>
+      <NavLink to="/merch" onClick={closeSidebar}>
+        Merch
+      </NavLink>
 
       <h3>Albums</h3>
 

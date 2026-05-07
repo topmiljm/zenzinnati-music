@@ -6,6 +6,7 @@ import Album from "./pages/Album";
 import Player from "./components/Player";
 import Sidebar from "./components/Sidebar";
 import About from "./pages/About";
+import Merch from "./pages/Merch";
 
 import "./App.css";
 
@@ -68,6 +69,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home albums={albums} />} />
               <Route path="/about" element={<About />} />
+              <Route path="/merch" element={<Merch />} />
               <Route
                 path="/album/:id"
                 element={

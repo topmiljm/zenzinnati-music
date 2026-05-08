@@ -4,7 +4,7 @@ const Sidebar = ({ isOpen, closeSidebar, currentAlbum, albums }) => {
   if (!albums.length) return null;
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
-      <h2 className="sidebar-title">🎵 Menu</h2>
+      <h2 className="sidebar-title"><img src="/favicon-1.png" alt="favicon" style={{ maxWidth: "30px", borderRadius: "5px" }}></img>  Menu</h2>
 
       <NavLink to="/" end onClick={closeSidebar}>
         Home

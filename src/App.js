@@ -60,8 +60,8 @@ function App() {
         />
 
         <div className="mobile-hamburger" onClick={toggleSidebar}>
-          {/* ☰ */}
-          <img src="/favicon-1.png" alt="favicon" style={{ maxWidth: "30px", borderRadius: "5px" }}></img>
+          ☰
+          {/* <img src="/favicon-1.png" alt="favicon" style={{ maxWidth: "30px", borderRadius: "5px" }}></img> */}
         </div>
 
         {/* NEW WRAPPER */}

@@ -155,7 +155,7 @@ body {
 }
 
 .about-page h1 {
-  margin-bottom: 20px;
+  margin-bottom: 1px;
 }
 
 .about-page p {
@@ -191,12 +191,21 @@ body {
 }
 
 .merch-page h1 {
-  margin-bottom: 20px;
+  margin-bottom: 1px;
 }
 
 .merch-page p {
   margin-bottom: 15px;
   color: #b3b3b3;
+}
+
+.merch-page-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-top: 1px;
+  margin-bottom: 20px;
+  border: 0.1px solid rgb(55, 51, 51);
 }
 
 

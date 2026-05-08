@@ -5,6 +5,7 @@ const About = () => {
   return (
     <div className="about-page">
       <h1>About Zen Zinnati</h1>
+      <img src="/covers/sub-header-option-3.jpg" alt="header" className="merch-page-image" />
       <p>
         Zen Zinnati is a music production project of songwriter and musician James Topmiller.
         Currently based in Los Angeles, CA, Zen Zinnati's roots are in Cincinnati, Ohio.
@@ -29,7 +30,7 @@ const About = () => {
           </a>
         </li>
       </ul>
-      <img src="/covers/Zen-Zinnati-1-copy.jpg" alt="Zen Zinnati" className="about-page-image" />
+      <img src="/covers/Zen-Zinnati-2.jpg" alt="Zen Zinnati" className="about-page-image" />
       <p>Inquiries:
         <span style={{ color: '#b99f1d' }}> 1mntnjames@gmail.com </span>
       </p>

@@ -92,7 +92,7 @@
 
     padding: 1.5rem;
 
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #b99f1d;
 }
 
 .close-cart {
@@ -164,7 +164,7 @@
 
 .cart-footer {
     padding: 1.5rem;
-    border-top: 1px solid #333;
+    border-top: 1px solid #b99f1d;
 }
 
 .checkout-button {

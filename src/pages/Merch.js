@@ -45,7 +45,13 @@ const Merch = () => {
                 className="cart-button"
                 onClick={() => setCartOpen(true)}
             >
-                Cart ({cartItems.length})
+                <img
+                    src="/covers/cart-image-1.jpg"
+                    alt="cart-image"
+                    style={{ maxWidth: "50px" }}
+                >
+                </img>
+                <div>[{cartItems.length}]</div>
             </button>
 
             {/* Overlay */}
@@ -74,6 +80,12 @@ const Merch = () => {
                         <div className="empty-cart">
                             <h3>Cart Empty</h3>
                             <p>Time to Fill It Up.</p>
+                            <img
+                                src="/covers/cart-image-2.jpg"
+                                alt="cart-image-2"
+                                style={{ maxWidth: "130px", borderRadius: "10px" }}
+                            >
+                            </img>
                         </div>
                     ) : (
                         cartItems.map((item) => (

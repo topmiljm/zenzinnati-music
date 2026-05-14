@@ -4,28 +4,110 @@ import "../Merch.css";
 const Merch = () => {
     const [cartOpen, setCartOpen] = useState(false);
 
-    // Temporary placeholder cart items
-    const cartItems = [];
-    //     {
-    //         id: 1,
-    //         name: "OG Zinnati Logo Tee",
-    //         size: "M",
-    //         quantity: 1,
-    //         price: 30,
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "Zinnati Hat",
-    //         size: "-",
-    //         quantity: 1,
-    //         price: 15,
-    //     },
-    // ];
+    const [cartItems, setCartItems] = useState([]);
+
+    const products = [
+        {
+            id: 1,
+            name: "OG Zinnati Logo Tee",
+            price: 30,
+            image: "/covers/merch-shirt-1.jpg",
+        },
+        {
+            id: 2,
+            name: "Zinnati Hat",
+            price: 15,
+            image: "/covers/merch-hat-1.jpg",
+        },
+        {
+            id: 3,
+            name: "Black Hoodie",
+            price: 60,
+            image: "/covers/merch-hoodie-1.jpg",
+        },
+        {
+            id: 4,
+            name: "Sticker Pack",
+            price: 8,
+            image: "/covers/merch-sticker-1.jpg",
+        },
+    ];
+
+    const addToCart = (product) => {
+        setCartItems((prev) => {
+            const existingItem = prev.find(
+                (item) => item.id === product.id
+            );
+
+            if (existingItem) {
+                return prev.map((item) =>
+                    item.id === product.id
+                        ? {
+                            ...item,
+                            quantity: item.quantity + 1,
+                        }
+                        : item
+                );
+            }
+
+            return [
+                ...prev,
+                {
+                    ...product,
+                    quantity: 1,
+                    size: "M",
+                },
+            ];
+        });
+    };
+
+    const removeFromCart = (indexToRemove) => {
+        setCartItems((prev) =>
+            prev.filter((_, index) => index !== indexToRemove)
+        );
+    };
+
+    const increaseQuantity = (id) => {
+        setCartItems((prev) =>
+            prev.map((item) =>
+                item.id === id
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1,
+                    }
+                    : item
+            )
+        );
+    };
+
+    const decreaseQuantity = (id) => {
+        setCartItems((prev) =>
+            prev
+                .map((item) =>
+                    item.id === id
+                        ? {
+                            ...item,
+                            quantity: item.quantity - 1,
+                        }
+                        : item
+                )
+                .filter((item) => item.quantity > 0)
+        );
+    };
+
+    const clearCart = () => {
+        setCartItems([]);
+    };
 
     const subtotal = cartItems.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
+
+    const cartCount = cartItems.reduce(
+        (total, item) => total + item.quantity,
+        0
+    )
 
     return (
         <div className="merch-page">
@@ -40,6 +122,33 @@ const Merch = () => {
 
             <p>Under Construction... Coming Soon.</p>
 
+            <div className="products-grid">
+                {products.map((product) => (
+                    <div key={product.id} className="product-card">
+                        <div className="product-image-wrapper">
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="product-image"
+                            />
+                        </div>
+
+                        <div className="product-info">
+                            <h3>{product.name}</h3>
+
+                            <p>${product.price}</p>
+
+                            <button
+                                className="add-to-cart-btn"
+                                onClick={() => addToCart(product)}
+                            >
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
             {/* Floating Cart Button */}
             <button
                 className="cart-button"
@@ -51,7 +160,7 @@ const Merch = () => {
                     style={{ maxWidth: "50px" }}
                 >
                 </img>
-                <div>[{cartItems.length}]</div>
+                <div>[{cartCount}]</div>
             </button>
 
             {/* Overlay */}
@@ -88,15 +197,35 @@ const Merch = () => {
                             </img>
                         </div>
                     ) : (
-                        cartItems.map((item) => (
-                            <div key={item.id} className="cart-item">
+                        cartItems.map((item, index) => (
+                            <div key={index} className="cart-item">
                                 <div className="cart-item-image-placeholder" />
 
                                 <div className="cart-item-info">
                                     <h3>{item.name}</h3>
                                     <p>Size: {item.size}</p>
-                                    <p>Qty: {item.quantity}</p>
+                                    <div className="quantity-controls">
+                                        <button
+                                            onClick={() => decreaseQuantity(item.id)}
+                                        >
+                                            -
+                                        </button>
+
+                                        <span>{item.quantity}</span>
+
+                                        <button
+                                            onClick={() => increaseQuantity(item.id)}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                     <p>${item.price}</p>
+                                    <button
+                                        className="remove-item-btn"
+                                        onClick={() => removeFromCart(index)}
+                                    >
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
                         ))
@@ -105,6 +234,12 @@ const Merch = () => {
 
                 <div className="cart-footer">
                     <h3>Subtotal: ${subtotal}</h3>
+                    <button
+                        className="clear-cart-btn"
+                        onClick={clearCart}
+                    >
+                        Clear Cart
+                    </button>
 
                     <button className="checkout-button">
                         Checkout

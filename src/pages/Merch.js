@@ -237,11 +237,15 @@ const Merch = () => {
                     <button
                         className="clear-cart-btn"
                         onClick={clearCart}
+                        disabled={cartItems.length === 0}
                     >
                         Clear Cart
                     </button>
 
-                    <button className="checkout-button">
+                    <button
+                        className="checkout-button"
+                        disabled={cartItems.length === 0}
+                    >
                         Checkout
                     </button>
                 </div>

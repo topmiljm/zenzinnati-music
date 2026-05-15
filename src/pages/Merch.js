@@ -160,7 +160,7 @@ const Merch = () => {
                     style={{ maxWidth: "50px" }}
                 >
                 </img>
-                <div>[{cartCount}]</div>
+                <div>({cartCount})</div>
             </button>
 
             {/* Overlay */}

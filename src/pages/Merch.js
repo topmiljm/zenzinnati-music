@@ -146,7 +146,7 @@ const Merch = () => {
                                     (item) => item.id === product.id
                                 ) ? (
                                     <div className="added-btn-content">
-                                        <span className="added-text">Added To Cart</span>
+                                        <span className="added-text">Added</span>
                                         {/* <img
                                             src="/covers/cart-image-1.jpg"
                                             alt="cart-image"

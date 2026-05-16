@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Merch.css";
+import "./Merch.css";
 
 const Merch = () => {
     const [cartOpen, setCartOpen] = useState(false);
@@ -146,7 +146,7 @@ const Merch = () => {
                                     (item) => item.id === product.id
                                 ) ? (
                                     <div className="added-btn-content">
-                                        <span className="added-text">Added</span>
+                                        <span className="added-text">Added To Cart</span>
                                         <img
                                             src="/covers/cart-image-1.jpg"
                                             alt="cart-image"

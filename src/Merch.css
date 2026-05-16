@@ -106,17 +106,42 @@
     transition: opacity 0.2s ease;
 }
 
-.add-to-cart-btn:hover {
+.add-to-cart-btn:not(:disabled):hover {
     opacity: 0.85;
     color: #b99f1d;
     border: solid 1px #b99f1d;
 }
 
-.add-to-cart-btn:active {
+.add-to-cart-btn:not(:disabled)active {
     color: #1db954;
     background: #333;
     box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
     border: solid 2px #aaa;
+}
+
+.add-to-cart-btn:disabled {
+    color: #1db954;
+    background: #333;
+    box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
+    cursor: not-allowed;
+}
+
+.added-btn-content {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.added-text {
+    font: bold;
+}
+
+.added-icon {
+    position: absolute;
+    right: 0;
+    mix-blend-mode: screen;
 }
 
 /* Floating Cart Button */
@@ -126,8 +151,6 @@
     top: 20px;
     right: 10px;
     z-index: 1000;
-
-    /* padding: 12px 18px; */
     border: none;
     border-radius: 999px;
 
@@ -260,67 +283,49 @@
     border-radius: 8px;
 }
 
+.cart-item-info {
+    text-align: left;
+}
+
 .cart-item-info h3 {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.25rem;
 }
 
-/* REMOVE ITEM BUTTON */
-
-.remove-item-btn {
-    margin-top: 0.75rem;
-
-    padding: 8px 12px;
-
-    border: none;
-    border-radius: 8px;
-
-    background: #ff4d4d;
-    color: white;
-
-    cursor: pointer;
-
-    font-size: 0.9rem;
-}
-
-.remove-item-btn:hover {
-    opacity: 0.9;
-}
-
-.remove-item-btn:active {
-    color: #ff4d4d;
-    background: white;
-    border: solid 1px #ff4d4d;
+.cart-item-info p {
+    margin: 0 0 0.25rem;
 }
 
 /* QUANTITY CONTROLS */
 
 .quantity-controls {
     display: flex;
+    width: 100%;
     align-items: center;
-
-    gap: 0.75rem;
-
+    gap: 0.5rem;
     margin-top: 0.5rem;
 }
 
 .quantity-controls button {
     width: 28px;
     height: 28px;
-
     border: none;
     border-radius: 6px;
-
     background: #333;
     color: white;
-
     cursor: pointer;
-
     font-size: 1rem;
 }
 
-.quantity-controls button:active {
+.quantity-controls-increase:active {
     color: #1db954;
     box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
+    border: solid 1px darkgray;
+}
+
+.quantity-controls-decrease:active {
+    color: #ff4d4d;
+    box-shadow: inset 0 0 10px #b99f1d;
+    border: solid 1px darkgray;
 }
 
 .quantity-controls span {
@@ -331,7 +336,7 @@
 /* CLEAR CART BUTTON */
 
 .clear-cart-btn {
-    width: 100%;
+    width: 80%;
 
     margin-top: 1rem;
     margin-bottom: 1rem;

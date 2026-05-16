@@ -57,19 +57,6 @@ body {
   scrollbar-color: #606060 #000;
 }
 
-/* .sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background: #000;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: #606060;
-  border-radius: 10px;
-} */
-
 .sidebar-title {
   margin: 0;
 }

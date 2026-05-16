@@ -61,19 +61,16 @@ const Merch = () => {
         });
     };
 
-    const removeFromCart = (indexToRemove) => {
-        setCartItems((prev) =>
-            prev.filter((_, index) => index !== indexToRemove)
-        );
-    };
-
     const increaseQuantity = (id) => {
         setCartItems((prev) =>
             prev.map((item) =>
                 item.id === id
                     ? {
                         ...item,
-                        quantity: item.quantity + 1,
+                        quantity:
+                            item.quantity < 5
+                                ? item.quantity + 1
+                                : 5,
                     }
                     : item
             )
@@ -141,8 +138,25 @@ const Merch = () => {
                             <button
                                 className="add-to-cart-btn"
                                 onClick={() => addToCart(product)}
+                                disabled={cartItems.some(
+                                    (item) => item.id === product.id
+                                )}
                             >
-                                Add To Cart
+                                {cartItems.some(
+                                    (item) => item.id === product.id
+                                ) ? (
+                                    <div className="added-btn-content">
+                                        <span className="added-text">Added</span>
+                                        <img
+                                            src="/covers/cart-image-1.jpg"
+                                            alt="cart-image"
+                                            style={{ maxWidth: "40px" }}
+                                            className="added-icon"
+                                        />
+                                    </div>
+                                ) : (
+                                    "Add To Cart"
+                                )}
                             </button>
                         </div>
                     </div>
@@ -164,12 +178,14 @@ const Merch = () => {
             </button>
 
             {/* Overlay */}
-            {cartOpen && (
-                <div
-                    className="cart-overlay"
-                    onClick={() => setCartOpen(false)}
-                />
-            )}
+            {
+                cartOpen && (
+                    <div
+                        className="cart-overlay"
+                        onClick={() => setCartOpen(false)}
+                    />
+                )
+            }
 
             {/* Sliding Cart */}
             <div className={`cart-drawer ${cartOpen ? "open" : ""}`}>
@@ -204,28 +220,28 @@ const Merch = () => {
                                 <div className="cart-item-info">
                                     <h3>{item.name}</h3>
                                     <p>Size: {item.size}</p>
+                                    <p>${item.price}</p>
                                     <div className="quantity-controls">
                                         <button
+                                            className="quantity-controls-decrease"
                                             onClick={() => decreaseQuantity(item.id)}
                                         >
-                                            -
+                                            {item.quantity === 1 ? (
+                                                "🗑"
+                                            ) : (
+                                                "-"
+                                            )}
                                         </button>
 
                                         <span>{item.quantity}</span>
 
                                         <button
+                                            className="quantity-controls-increase"
                                             onClick={() => increaseQuantity(item.id)}
                                         >
                                             +
                                         </button>
                                     </div>
-                                    <p>${item.price}</p>
-                                    <button
-                                        className="remove-item-btn"
-                                        onClick={() => removeFromCart(index)}
-                                    >
-                                        Remove
-                                    </button>
                                 </div>
                             </div>
                         ))
@@ -235,22 +251,21 @@ const Merch = () => {
                 <div className="cart-footer">
                     <h3>Subtotal: ${subtotal}</h3>
                     <button
+                        className="checkout-button"
+                        disabled={cartItems.length === 0}
+                    >
+                        Checkout
+                    </button>
+                    <button
                         className="clear-cart-btn"
                         onClick={clearCart}
                         disabled={cartItems.length === 0}
                     >
                         Clear Cart
                     </button>
-
-                    <button
-                        className="checkout-button"
-                        disabled={cartItems.length === 0}
-                    >
-                        Checkout
-                    </button>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -147,12 +147,12 @@ const Merch = () => {
                                 ) ? (
                                     <div className="added-btn-content">
                                         <span className="added-text">Added</span>
-                                        {/* <img
+                                        <img
                                             src="/covers/cart-image-1.jpg"
                                             alt="cart-image"
                                             style={{ maxWidth: "40px" }}
                                             className="added-icon"
-                                        /> */}
+                                        />
                                     </div>
                                 ) : (
                                     "Add To Cart"

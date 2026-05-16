@@ -112,7 +112,7 @@
     border: solid 1px #b99f1d;
 }
 
-.add-to-cart-btn:not(:disabled)active {
+.add-to-cart-btn:not(:disabled):active {
     color: #1db954;
     background: #333;
     box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);

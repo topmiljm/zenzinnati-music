@@ -159,7 +159,7 @@ const Player = ({
         </button>
 
         <button onClick={togglePlay}>
-          {isPlaying ? "⏸" : "▶️"}
+          {isPlaying ? "⏸" : "▶"}
         </button>
 
         <button

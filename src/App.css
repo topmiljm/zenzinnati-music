@@ -338,20 +338,30 @@ body {
 .progress-bar {
   width: 150px;
   background: #535353;
+  box-shadow: inset 0 0 5px rgba(29, 185, 84, 0.2);
 }
 
 .volume {
   width: 70px;
-  background: #2158ab;
+  background: #333;
+  box-shadow: inset 0 0 3px #b99f1d;
 }
 
 /* Thumb */
-.progress-bar::-webkit-slider-thumb,
-.volume::-webkit-slider-thumb {
+.progress-bar::-webkit-slider-thumb {
   appearance: none;
   height: 12px;
   width: 12px;
   background: #1db954;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume::-webkit-slider-thumb {
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  background: #b99f1d;
   border-radius: 50%;
   cursor: pointer;
 }

@@ -24,14 +24,20 @@ const About = () => {
         Follow on YouTube to check out other projects:
       </p>
       <ul>
-        <li>
+        <li className="about-page-list">
           <a href="https://www.youtube.com/@ZenZinnati" target="_blank" rel="noreferrer">
             YouTube
           </a>
         </li>
       </ul>
-      <img src="/covers/Zen-Zinnati-2.jpg" alt="Zen Zinnati" className="about-page-image" />
-      <p>Inquiries:
+      {/* <div className="about-page-image-container-1"> */}
+      <div className="about-page-image-container-1">
+        <div className="line-1"></div>
+        <img src="/covers/cart-image-2.jpg" alt="Zen Zinnati" className="about-page-image" />
+        <div className="line-2"></div>
+      </div>
+      {/* </div> */}
+      <p className="inquiries">Inquiries:
         <span style={{ color: '#b99f1d' }}> 1mntnjames@gmail.com </span>
       </p>
     </div>

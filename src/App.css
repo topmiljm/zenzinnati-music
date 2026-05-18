@@ -172,10 +172,8 @@ body {
 .about-page-list {
   max-width: 300px;
   margin: 0 auto;
-}
-
-.about-page-list:hover {
   box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
+
 }
 
 .about-page a {
@@ -185,6 +183,8 @@ body {
 
 .about-page a:hover {
   text-decoration: underline;
+  box-shadow: inset 0 0 20px rgba(29, 185, 84, 0.2);
+
 }
 
 .about-page-image-container-1 {
@@ -205,7 +205,6 @@ body {
   width: 249px;
   height: 30px;
   border-bottom: 1px solid #b99f1d;
-  /* position: absolute; */
   justify-content: center;
 }
 
@@ -221,7 +220,6 @@ body {
   width: 249px;
   height: 30px;
   border-bottom: 1px solid #b99f1d;
-  /* position: absolute; */
   justify-content: center;
 }
 

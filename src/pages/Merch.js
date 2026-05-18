@@ -204,7 +204,7 @@ const Merch = () => {
                     {cartItems.length === 0 ? (
                         <div className="empty-cart">
                             <h3>Cart Empty</h3>
-                            <p>Time to Fill It Up.</p>
+                            <p>Time to Fill It Up</p>
                             <img
                                 src="/covers/cart-image-2.jpg"
                                 alt="cart-image-2"

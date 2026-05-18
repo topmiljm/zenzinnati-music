@@ -9,26 +9,38 @@ const Merch = () => {
     const products = [
         {
             id: 1,
-            name: "OG Zinnati Logo Tee",
+            name: "Zen Zinnati Logo Tee style 1",
             price: 30,
             image: "/covers/merch-shirt-1.jpg",
         },
         {
             id: 2,
-            name: "Zinnati Hat",
-            price: 15,
+            name: "Zen Zinnati Logo Tee style 2",
+            price: 30,
             image: "/covers/merch-hat-1.jpg",
         },
         {
             id: 3,
-            name: "Black Hoodie",
-            price: 60,
+            name: "Zen Zinnati Logo Tee style 3",
+            price: 30,
             image: "/covers/merch-hoodie-1.jpg",
         },
         {
             id: 4,
-            name: "Sticker Pack",
-            price: 8,
+            name: "Zen Zinnati Logo Tee style 4",
+            price: 30,
+            image: "/covers/merch-sticker-1.jpg",
+        },
+        {
+            id: 5,
+            name: "Zen Zinnati Logo Tee style 5",
+            price: 30,
+            image: "/covers/merch-sticker-1.jpg",
+        },
+        {
+            id: 6,
+            name: "Zen Zinnati Logo Hat",
+            price: 25,
             image: "/covers/merch-sticker-1.jpg",
         },
     ];
@@ -132,8 +144,24 @@ const Merch = () => {
 
                         <div className="product-info">
                             <h3>{product.name}</h3>
+                            <div className="product-selects">
+                                <select className="product-select" defaultValue="">
+                                    {/* <option value="" disabled>Size</option> */}
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="xl">XL</option>
+                                </select>
 
-                            <p>${product.price}</p>
+                                <select className="product-select" defaultValue="">
+                                    {/* <option value="" disabled>Color</option> */}
+                                    <option value="black">Black</option>
+                                    <option value="white">White</option>
+                                    <option value="red">Red</option>
+                                    <option value="blue">Blue</option>
+                                </select>
+                            </div>
+                            <p>${(product.price).toFixed(2)}</p>
 
                             <button
                                 className="add-to-cart-btn"
@@ -220,7 +248,7 @@ const Merch = () => {
                                 <div className="cart-item-info">
                                     <h3>{item.name}</h3>
                                     <p>Size: {item.size}</p>
-                                    <p>${item.price}</p>
+                                    <p>${(item.price).toFixed(2)}</p>
                                     <div className="quantity-controls">
                                         <button
                                             className="quantity-controls-decrease"

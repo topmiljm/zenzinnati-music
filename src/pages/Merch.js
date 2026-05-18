@@ -11,41 +11,77 @@ const Merch = () => {
             id: 1,
             name: "Zen Zinnati Logo Tee style 1",
             price: 30,
-            image: "/covers/merch-shirt-1.jpg",
+            hasSizes: true,
+            sizes: ["S", "M", "L", "XL"],
+            defaultSize: "M",
+            colors: ["White", "Black", "Red", "Blue"],
+            defaultColor: "White",
+            image: "/covers/merch-tee-1.jpg",
         },
         {
             id: 2,
             name: "Zen Zinnati Logo Tee style 2",
             price: 30,
-            image: "/covers/merch-hat-1.jpg",
+            hasSizes: true,
+            sizes: ["S", "M", "L", "XL"],
+            defaultSize: "M",
+            colors: ["White", "Black", "Red", "Blue"],
+            defaultColor: "Black",
+            image: "/covers/merch-tee-2.jpg",
         },
         {
             id: 3,
             name: "Zen Zinnati Logo Tee style 3",
             price: 30,
-            image: "/covers/merch-hoodie-1.jpg",
+            hasSizes: true,
+            sizes: ["S", "M", "L", "XL"],
+            defaultSize: "M",
+            colors: ["White", "Black", "Red", "Blue"],
+            defaultColor: "Blue",
+            image: "/covers/merch-tee-3.jpg",
         },
         {
             id: 4,
             name: "Zen Zinnati Logo Tee style 4",
             price: 30,
-            image: "/covers/merch-sticker-1.jpg",
+            hasSizes: true,
+            sizes: ["S", "M", "L", "XL"],
+            defaultSize: "M",
+            colors: ["White", "Black", "Red", "Blue"],
+            defaultColor: "Blue",
+            image: "/covers/merch-tee-4.jpg",
         },
         {
             id: 5,
             name: "Zen Zinnati Logo Tee style 5",
             price: 30,
-            image: "/covers/merch-sticker-1.jpg",
+            hasSizes: true,
+            sizes: ["S", "M", "L", "XL"],
+            defaultSize: "M",
+            colors: ["White", "Black", "Red", "Blue"],
+            defaultColor: "Red",
+            image: "/covers/merch-tee-5.jpg",
         },
         {
             id: 6,
             name: "Zen Zinnati Logo Hat",
             price: 25,
-            image: "/covers/merch-sticker-1.jpg",
+            hasSizes: false,
+            colors: ["White", "Black", "Beige",],
+            defaultColor: "Beige",
+            image: "/covers/merch-hat-1.jpg",
         },
     ];
 
-    const addToCart = (product) => {
+    const [selectedColors, setSelectedColors] = useState(
+        Object.fromEntries(products.map((p) => [p.id, p.defaultColor]))
+    );
+
+    const [selectedSizes, setSelectedSizes] = useState(
+        Object.fromEntries(products.map((p) => [p.id, p.defaultSize]))
+    );
+
+    const addToCart = (product, size, color) => {
         setCartItems((prev) => {
             const existingItem = prev.find(
                 (item) => item.id === product.id
@@ -67,7 +103,8 @@ const Merch = () => {
                 {
                     ...product,
                     quantity: 1,
-                    size: "M",
+                    size: size,
+                    color: color,
                 },
             ];
         });
@@ -145,27 +182,33 @@ const Merch = () => {
                         <div className="product-info">
                             <h3>{product.name}</h3>
                             <div className="product-selects">
-                                <select className="product-select" defaultValue="">
-                                    {/* <option value="" disabled>Size</option> */}
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
-                                    <option value="xl">XL</option>
-                                </select>
+                                {product.hasSizes && (
+                                    <select
+                                        className="product-select"
+                                        value={selectedSizes[product.id]}
+                                        onChange={(e) => setSelectedSizes((prev) => ({ ...prev, [product.id]: e.target.value }))}
+                                    >
+                                        {product.sizes.map((size) => (
+                                            <option key={size} value={size}>{size}</option>
+                                        ))}
+                                    </select>
+                                )}
 
-                                <select className="product-select" defaultValue="">
-                                    {/* <option value="" disabled>Color</option> */}
-                                    <option value="black">Black</option>
-                                    <option value="white">White</option>
-                                    <option value="red">Red</option>
-                                    <option value="blue">Blue</option>
+                                <select
+                                    className="product-select"
+                                    value={selectedColors[product.id]}
+                                    onChange={(e) => setSelectedColors((prev) => ({ ...prev, [product.id]: e.target.value }))}
+                                >
+                                    {product.colors.map((color) => (
+                                        <option key={color} value={color}>{color}</option>
+                                    ))}
                                 </select>
                             </div>
                             <p>${(product.price).toFixed(2)}</p>
 
                             <button
                                 className="add-to-cart-btn"
-                                onClick={() => addToCart(product)}
+                                onClick={() => addToCart(product, selectedSizes[product.id], selectedColors[product.id])}
                                 disabled={cartItems.some(
                                     (item) => item.id === product.id
                                 )}
@@ -247,7 +290,8 @@ const Merch = () => {
 
                                 <div className="cart-item-info">
                                     <h3>{item.name}</h3>
-                                    <p>Size: {item.size}</p>
+                                    {item.size && <p>Size: {item.size}</p>}
+                                    <p>Color: {item.color}</p>
                                     <p>${(item.price).toFixed(2)}</p>
                                     <div className="quantity-controls">
                                         <button

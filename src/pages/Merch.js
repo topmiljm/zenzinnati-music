@@ -3,8 +3,8 @@ import "./Merch.css";
 
 const Merch = () => {
     const [cartOpen, setCartOpen] = useState(false);
-
     const [cartItems, setCartItems] = useState([]);
+    const [cooldowns, setCooldowns] = useState({});
 
     const products = [
         {
@@ -84,36 +84,33 @@ const Merch = () => {
     const addToCart = (product, size, color) => {
         setCartItems((prev) => {
             const existingItem = prev.find(
-                (item) => item.id === product.id
+                (item) => item.id === product.id && item.size === size && item.color === color
             );
 
             if (existingItem) {
                 return prev.map((item) =>
-                    item.id === product.id
-                        ? {
-                            ...item,
-                            quantity: item.quantity + 1,
-                        }
+                    item.id === product.id && item.size === size && item.color === color
+                        ? { ...item, quantity: item.quantity + 1 }
                         : item
                 );
             }
 
             return [
                 ...prev,
-                {
-                    ...product,
-                    quantity: 1,
-                    size: size,
-                    color: color,
-                },
+                { ...product, quantity: 1, size: size, color: color },
             ];
         });
+
+        setCooldowns((prev) => ({ ...prev, [product.id]: true }));
+        setTimeout(() => {
+            setCooldowns((prev) => ({ ...prev, [product.id]: false }));
+        }, 2000);
     };
 
-    const increaseQuantity = (id) => {
+    const increaseQuantity = (index) => {
         setCartItems((prev) =>
-            prev.map((item) =>
-                item.id === id
+            prev.map((item, i) =>
+                i === index
                     ? {
                         ...item,
                         quantity:
@@ -126,11 +123,11 @@ const Merch = () => {
         );
     };
 
-    const decreaseQuantity = (id) => {
+    const decreaseQuantity = (index) => {
         setCartItems((prev) =>
             prev
-                .map((item) =>
-                    item.id === id
+                .map((item, i) =>
+                    i === index
                         ? {
                             ...item,
                             quantity: item.quantity - 1,
@@ -209,13 +206,9 @@ const Merch = () => {
                             <button
                                 className="add-to-cart-btn"
                                 onClick={() => addToCart(product, selectedSizes[product.id], selectedColors[product.id])}
-                                disabled={cartItems.some(
-                                    (item) => item.id === product.id
-                                )}
+                                disabled={cooldowns[product.id]}
                             >
-                                {cartItems.some(
-                                    (item) => item.id === product.id
-                                ) ? (
+                                {cooldowns[product.id] ? (
                                     <div className="added-btn-content">
                                         <span className="added-text">Added</span>
                                         <img
@@ -296,7 +289,7 @@ const Merch = () => {
                                     <div className="quantity-controls">
                                         <button
                                             className="quantity-controls-decrease"
-                                            onClick={() => decreaseQuantity(item.id)}
+                                            onClick={() => decreaseQuantity(index)}
                                         >
                                             {item.quantity === 1 ? (
                                                 "🗑"
@@ -309,7 +302,7 @@ const Merch = () => {
 
                                         <button
                                             className="quantity-controls-increase"
-                                            onClick={() => increaseQuantity(item.id)}
+                                            onClick={() => increaseQuantity(index)}
                                         >
                                             +
                                         </button>
@@ -321,7 +314,7 @@ const Merch = () => {
                 </div>
 
                 <div className="cart-footer">
-                    <h3>Subtotal: ${subtotal}</h3>
+                    <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
                     <button
                         className="checkout-button"
                         disabled={cartItems.length === 0}

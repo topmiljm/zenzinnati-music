@@ -104,7 +104,7 @@ const Merch = () => {
         setCooldowns((prev) => ({ ...prev, [product.id]: true }));
         setTimeout(() => {
             setCooldowns((prev) => ({ ...prev, [product.id]: false }));
-        }, 2000);
+        }, 3000);
     };
 
     const increaseQuantity = (index) => {

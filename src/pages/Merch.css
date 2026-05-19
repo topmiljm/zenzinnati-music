@@ -173,11 +173,12 @@
     color: #1db954;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px #b99f1d;
+    ;
 }
 
 .cart-button:hover {
-    box-shadow: 0 4px 12px #b99f1d;
+    box-shadow: 0 4px 20px #b99f1d;
 }
 
 /* Overlay */

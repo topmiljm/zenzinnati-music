@@ -4,6 +4,7 @@ import "./Merch.css";
 const Merch = () => {
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [previewImage, setPreviewImage] = useState(null);
     const [cooldowns, setCooldowns] = useState({});
 
     const products = [
@@ -14,9 +15,12 @@ const Merch = () => {
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Red", "Blue"],
+            colors: ["White", "Black"],
             defaultColor: "White",
-            image: "/covers/merch-tee-1.jpg",
+            images: {
+                White: "/covers/tee-1-white.png",
+                Black: "/covers/tee-1-black.png"
+            },
         },
         {
             id: 2,
@@ -27,7 +31,7 @@ const Merch = () => {
             defaultSize: "M",
             colors: ["White", "Black", "Red", "Blue"],
             defaultColor: "Black",
-            image: "/covers/merch-tee-2.jpg",
+            images: "/covers/merch-tee-2.jpg",
         },
         {
             id: 3,
@@ -38,7 +42,7 @@ const Merch = () => {
             defaultSize: "M",
             colors: ["White", "Black", "Red", "Blue"],
             defaultColor: "Blue",
-            image: "/covers/merch-tee-3.jpg",
+            images: "/covers/merch-tee-3.jpg",
         },
         {
             id: 4,
@@ -49,7 +53,7 @@ const Merch = () => {
             defaultSize: "M",
             colors: ["White", "Black", "Red", "Blue"],
             defaultColor: "Blue",
-            image: "/covers/merch-tee-4.jpg",
+            images: "/covers/merch-tee-4.jpg",
         },
         {
             id: 5,
@@ -60,7 +64,7 @@ const Merch = () => {
             defaultSize: "M",
             colors: ["White", "Black", "Red", "Blue"],
             defaultColor: "Red",
-            image: "/covers/merch-tee-5.jpg",
+            images: "/covers/merch-tee-5.jpg",
         },
         {
             id: 6,
@@ -69,7 +73,7 @@ const Merch = () => {
             hasSizes: false,
             colors: ["White", "Black", "Beige",],
             defaultColor: "Beige",
-            image: "/covers/merch-hat-1.jpg",
+            images: "/covers/merch-hat-1.jpg",
         },
     ];
 
@@ -168,9 +172,10 @@ const Merch = () => {
             <div className="products-grid">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
-                        <div className="product-image-wrapper">
+                        <div className="product-image-wrapper"
+                            onClick={() => setPreviewImage(product.images?.[selectedColors[product.id]])}>
                             <img
-                                src={product.image}
+                                src={product.images?.[selectedColors[product.id]] || Object.values(product.images)[0]}
                                 alt={product.name}
                                 className="product-image"
                             />
@@ -279,8 +284,11 @@ const Merch = () => {
                     ) : (
                         cartItems.map((item, index) => (
                             <div key={index} className="cart-item">
-                                <div className="cart-item-image-placeholder" />
-
+                                <img
+                                    src={item.images?.[item.color]}
+                                    alt={item.name}
+                                    className="cart-item-image"
+                                />
                                 <div className="cart-item-info">
                                     <h3>{item.name}</h3>
                                     {item.size && <p>Size: {item.size}</p>}
@@ -330,6 +338,11 @@ const Merch = () => {
                     </button>
                 </div>
             </div>
+            {previewImage && (
+                <div className="image-preview-overlay" onClick={() => setPreviewImage(null)}>
+                    <img src={previewImage} alt="preview" className="image-preview-large" />
+                </div>
+            )}
         </div >
     );
 };

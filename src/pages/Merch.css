@@ -138,9 +138,10 @@
 
 .add-to-cart-btn:disabled {
     color: #1db954;
-    background: #333;
+    background: #1a1a1a;
     box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
     cursor: not-allowed;
+    border: solid 2px #aaa;
 }
 
 .added-btn-content {

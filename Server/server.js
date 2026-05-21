@@ -4,7 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const cors = require("cors");
 
 const app = express();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "http://zenzinnatimusic.verce.app" }));
 app.use(express.json());
 
 app.post("/create-checkout-session", async (req, res) => {

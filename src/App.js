@@ -7,6 +7,7 @@ import Player from "./components/Player";
 import Sidebar from "./components/Sidebar";
 import About from "./pages/About";
 import Merch from "./pages/Merch";
+import Success from "./pages/Success";
 
 import "./App.css";
 
@@ -82,6 +83,7 @@ function App() {
                   />
                 }
               />
+              <Route path="/success" element={<Success />} />
             </Routes>
           </div>
 

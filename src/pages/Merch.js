@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Merch.css";
 
 const Merch = () => {
     const [cartOpen, setCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(() => {
+        try {
+            const saved = localStorage.getItem("cartItems");
+            return saved ? JSON.parse(saved) : [];
+        } catch {
+            return [];
+        }
+    });
+
     const [previewImage, setPreviewImage] = useState(null);
     const [cooldowns, setCooldowns] = useState({});
 
@@ -18,8 +26,14 @@ const Merch = () => {
             colors: ["White", "Black"],
             defaultColor: "White",
             images: {
-                White: "/covers/tee-1-white.png",
-                Black: "/covers/tee-1-black.png"
+                White: [
+                    "/covers/tee-1-white.png",
+                    "/covers/tee-1-white-back.png"
+                ],
+                Black: [
+                    "/covers/tee-1-black.png",
+                    "/covers/tee-1-black-back.png"
+                ]
             },
         },
         {
@@ -84,6 +98,14 @@ const Merch = () => {
     const [selectedSizes, setSelectedSizes] = useState(
         Object.fromEntries(products.map((p) => [p.id, p.defaultSize]))
     );
+
+    const [imageIndexes, setImageIndexes] = useState(
+        Object.fromEntries(products.map((p) => [p.id, 0]))
+    );
+
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }, [cartItems]);
 
     const addToCart = (product, size, color) => {
         setCartItems((prev) => {
@@ -156,6 +178,17 @@ const Merch = () => {
         0
     )
 
+    const handleCheckout = async () => {
+        const response = await fetch("http://localhost:4000/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cartItems }),
+        });
+
+        const { url } = await response.json();
+        window.location.href = url; // Redirect to Stripe's hosted checkout
+    };
+
     return (
         <div className="merch-page">
             {/* Header */}
@@ -172,13 +205,57 @@ const Merch = () => {
             <div className="products-grid">
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
-                        <div className="product-image-wrapper"
-                            onClick={() => setPreviewImage(product.images?.[selectedColors[product.id]])}>
+                        <div className="product-image-wrapper">
+                            {Array.isArray(product.images?.[selectedColors[product.id]]) &&
+                                product.images[selectedColors[product.id]].length > 1 && (
+                                    <button
+                                        className="image-arrow image-arrow-left"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setImageIndexes((prev) => ({
+                                                ...prev,
+                                                [product.id]: prev[product.id] === 0
+                                                    ? product.images[selectedColors[product.id]].length - 1
+                                                    : prev[product.id] - 1
+                                            }));
+                                        }}
+                                    >
+                                        ‹
+                                    </button>
+                                )}
+
                             <img
-                                src={product.images?.[selectedColors[product.id]] || Object.values(product.images)[0]}
+                                src={
+                                    Array.isArray(product.images?.[selectedColors[product.id]])
+                                        ? product.images[selectedColors[product.id]][imageIndexes[product.id]]
+                                        : product.images?.[selectedColors[product.id]] || Object.values(product.images)[0]
+                                }
                                 alt={product.name}
                                 className="product-image"
+                                onClick={() => setPreviewImage(
+                                    Array.isArray(product.images?.[selectedColors[product.id]])
+                                        ? product.images[selectedColors[product.id]][imageIndexes[product.id]]
+                                        : product.images?.[selectedColors[product.id]]
+                                )}
                             />
+
+                            {Array.isArray(product.images?.[selectedColors[product.id]]) &&
+                                product.images[selectedColors[product.id]].length > 1 && (
+                                    <button
+                                        className="image-arrow image-arrow-right"
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setImageIndexes((prev) => ({
+                                                ...prev,
+                                                [product.id]: prev[product.id] === product.images[selectedColors[product.id]].length - 1
+                                                    ? 0
+                                                    : prev[product.id] + 1
+                                            }));
+                                        }}
+                                    >
+                                        ›
+                                    </button>
+                                )}
                         </div>
 
                         <div className="product-info">
@@ -188,7 +265,10 @@ const Merch = () => {
                                     <select
                                         className="product-select"
                                         value={selectedSizes[product.id]}
-                                        onChange={(e) => setSelectedSizes((prev) => ({ ...prev, [product.id]: e.target.value }))}
+                                        onChange={(e) => {
+                                            setSelectedSizes((prev) => ({ ...prev, [product.id]: e.target.value }));
+                                            setImageIndexes((prev) => ({ ...prev, [product.id]: 0 }));
+                                        }}
                                     >
                                         {product.sizes.map((size) => (
                                             <option key={size} value={size}>{size}</option>
@@ -285,7 +365,11 @@ const Merch = () => {
                         cartItems.map((item, index) => (
                             <div key={index} className="cart-item">
                                 <img
-                                    src={item.images?.[item.color]}
+                                    src={
+                                        Array.isArray(item.images?.[item.color])
+                                            ? item.images[item.color][0]
+                                            : item.images?.[item.color]
+                                    }
                                     alt={item.name}
                                     className="cart-item-image"
                                 />
@@ -326,6 +410,7 @@ const Merch = () => {
                     <button
                         className="checkout-button"
                         disabled={cartItems.length === 0}
+                        onClick={handleCheckout}
                     >
                         Checkout
                     </button>

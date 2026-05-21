@@ -19,7 +19,7 @@ const Success = () => {
             </img>
             <p>Thanks for your purchase. You will receive a confirmation email shortly.</p>
             <button onClick={() => navigate("/merch")}>Back To Merch</button>
-        </div>
+        </div >
     );
 };
 

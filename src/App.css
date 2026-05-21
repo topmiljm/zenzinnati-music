@@ -262,6 +262,8 @@ body {
 .success-page {
   text-align: center;
   padding: 4rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .success-page h1 {

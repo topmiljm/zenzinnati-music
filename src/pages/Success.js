@@ -17,7 +17,7 @@ const Success = () => {
                 style={{ maxWidth: "50px" }}
             >
             </img>
-            <p>Thanks for your purchase. You'll receive a confirmation email shortly.</p>
+            <p>Thanks for your purchase. You will receive a confirmation email shortly.</p>
             <button onClick={() => navigate("/merch")}>Back To Merch</button>
         </div>
     );

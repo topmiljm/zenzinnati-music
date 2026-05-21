@@ -27,8 +27,8 @@ app.post("/create-checkout-session", async (req, res) => {
         line_items: lineItems,
         mode: "payment",
         billing_address_collection: "required",
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/merch",
+        success_url: "http://zenzinnatimusic.vercel.app/success",
+        cancel_url: "http://zenzinnatimusic.vercel/merch",
     });
 
     res.json({ url: session.url });

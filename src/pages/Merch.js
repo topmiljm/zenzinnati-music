@@ -179,7 +179,7 @@ const Merch = () => {
     )
 
     const handleCheckout = async () => {
-        const response = await fetch("http://localhost:4000/create-checkout-session", {
+        const response = await fetch("http://process.env.REACT_APP_API_URL/create-checkout-session", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ cartItems }),

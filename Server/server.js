@@ -4,7 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const cors = require("cors");
 
 const app = express();
-app.use(cors({ origin: "http://zenzinnatimusic.verce.app" }));
+app.use(cors({ origin: "https://zenzinnatimusic.vercel.app" }));
 app.use(express.json());
 
 app.post("/create-checkout-session", async (req, res) => {
@@ -27,8 +27,8 @@ app.post("/create-checkout-session", async (req, res) => {
         line_items: lineItems,
         mode: "payment",
         billing_address_collection: "required",
-        success_url: "http://zenzinnatimusic.vercel.app/success",
-        cancel_url: "http://zenzinnatimusic.vercel/merch",
+        success_url: "https://zenzinnatimusic.vercel.app/success",
+        cancel_url: "https://zenzinnatimusic.vercel.app/merch",
     });
 
     res.json({ url: session.url });

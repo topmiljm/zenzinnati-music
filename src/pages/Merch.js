@@ -200,7 +200,7 @@ const Merch = () => {
                 className="merch-page-image"
             />
 
-            <p>Under Construction... Coming Soon.</p>
+            <p>Under Construction... </p>
 
             <div className="products-grid">
                 {products.map((product) => (

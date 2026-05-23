@@ -192,7 +192,7 @@ const Merch = () => {
     return (
         <div className="merch-page">
             {/* Header */}
-            <h1>Shop Merch</h1>
+            <h1>Merch Shop</h1>
 
             <img
                 src="/covers/sub-header-option-3.jpg"

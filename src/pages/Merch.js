@@ -206,7 +206,7 @@ const Merch = () => {
                 {products.map((product) => (
                     <div key={product.id} className="product-card">
                         <div className="product-image-wrapper">
-                            {Array.isArray(product.images?.[selectedColors[product.id]]) &&
+                            {/* {Array.isArray(product.images?.[selectedColors[product.id]]) &&
                                 product.images[selectedColors[product.id]].length > 1 && (
                                     <button
                                         className="image-arrow image-arrow-left"
@@ -222,7 +222,7 @@ const Merch = () => {
                                     >
                                         ‹
                                     </button>
-                                )}
+                                )} */}
 
                             <img
                                 src={

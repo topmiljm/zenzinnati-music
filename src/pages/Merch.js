@@ -54,36 +54,51 @@ const Merch = () => {
         },
         {
             id: 3,
-            name: "Zen Zinnati - Logo Tee style 3",
+            name: "Zen Zinnati - 'All Shapes & Sizes' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Red", "Blue"],
-            defaultColor: "Blue",
-            images: "/covers/merch-tee-3.jpg",
+            colors: ["White", "Black", "Green", "Blue"],
+            defaultColor: "Green",
+            images: {
+                Green: [
+                    "/covers/tee-3-green.png",
+                    "/covers/tee-3-green-back.png"
+                ],
+            }
         },
         {
             id: 4,
-            name: "Zen Zinnati - Logo Tee style 4",
+            name: "Zen Zinnati - 'Ride The Wave' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
             colors: ["White", "Black", "Red", "Blue"],
             defaultColor: "Blue",
-            images: "/covers/merch-tee-4.jpg",
+            images: {
+                Blue: [
+                    "/covers/tee-4-blue.png",
+                    "/covers/tee-4-blue-back.png"
+                ],
+            }
         },
         {
             id: 5,
-            name: "Zen Zinnati - Logo Tee style 5",
+            name: "Zen Zinnati - 'Balls of Steel' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Red", "Blue"],
-            defaultColor: "Red",
-            images: "/covers/merch-tee-5.jpg",
+            colors: ["White", "Black", "Purple", "Blue"],
+            defaultColor: "Purple",
+            images: {
+                Purple: [
+                    "/covers/tee-5-purple.png",
+                    "/covers/tee-5-purple-back.png"
+                ],
+            }
         },
         {
             id: 6,

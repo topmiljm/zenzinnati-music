@@ -18,7 +18,7 @@ const Merch = () => {
     const products = [
         {
             id: 1,
-            name: "Zen Zinnati 'i am Zen' Design T-Shirt",
+            name: "Zen Zinnati - 'i am Zen' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -38,7 +38,7 @@ const Merch = () => {
         },
         {
             id: 2,
-            name: "Zen Zinnati 'Like Circles' Design T-Shirt",
+            name: "Zen Zinnati - 'Like Circles' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -54,7 +54,7 @@ const Merch = () => {
         },
         {
             id: 3,
-            name: "Zen Zinnati Logo Tee style 3",
+            name: "Zen Zinnati - Logo Tee style 3",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -65,7 +65,7 @@ const Merch = () => {
         },
         {
             id: 4,
-            name: "Zen Zinnati Logo Tee style 4",
+            name: "Zen Zinnati - Logo Tee style 4",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -76,7 +76,7 @@ const Merch = () => {
         },
         {
             id: 5,
-            name: "Zen Zinnati Logo Tee style 5",
+            name: "Zen Zinnati - Logo Tee style 5",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -87,7 +87,7 @@ const Merch = () => {
         },
         {
             id: 6,
-            name: "Zen Zinnati Logo Hat",
+            name: "Zen Zinnati - Logo Hat",
             price: 25,
             hasSizes: false,
             colors: ["White", "Black", "Beige",],

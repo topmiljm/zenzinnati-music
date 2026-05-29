@@ -24,7 +24,7 @@ const Merch = () => {
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
             colors: ["White", "Black"],
-            defaultColor: "White",
+            defaultColor: "Black",
             images: {
                 White: [
                     "/covers/tee-1-white.png",

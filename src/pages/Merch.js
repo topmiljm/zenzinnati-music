@@ -70,7 +70,7 @@ const Merch = () => {
         },
         {
             id: 4,
-            name: "Zen Zinnati - 'Ride The Wave' Design T-Shirt",
+            name: "Zen Zinnati - 'Just Ride The Wave' Design T-Shirt",
             price: 30,
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
@@ -102,12 +102,19 @@ const Merch = () => {
         },
         {
             id: 6,
-            name: "Zen Zinnati - Logo Hat",
+            name: "Zen Zinnati - Adjustable Size Hat (Velcro)",
             price: 25,
             hasSizes: false,
-            colors: ["White", "Black", "Beige",],
+            colors: ["Blue", "Beige",],
             defaultColor: "Beige",
-            images: "/covers/merch-hat-1.jpg",
+            images: {
+                Beige: [
+                    "/covers/hat-2-beige.png"
+                ],
+                Blue: [
+                    "/covers/hat-1-blue.png"
+                ]
+            }
         },
     ];
 

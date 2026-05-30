@@ -378,6 +378,8 @@ const Merch = () => {
                                 src="/covers/cart-image-2.jpg"
                                 alt="cart-image-2"
                                 style={{ maxWidth: "130px", borderRadius: "10px" }}
+                                onClick={() => setCartOpen(false)}
+                                className="close-cart"
                             >
                             </img>
                         </div>

@@ -43,7 +43,7 @@ const Merch = () => {
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Red", "Blue"],
+            colors: ["Red"],
             defaultColor: "Red",
             images: {
                 Red: [
@@ -59,7 +59,7 @@ const Merch = () => {
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Green", "Blue"],
+            colors: ["Green"],
             defaultColor: "Green",
             images: {
                 Green: [
@@ -75,7 +75,7 @@ const Merch = () => {
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Red", "Blue"],
+            colors: ["Blue"],
             defaultColor: "Blue",
             images: {
                 Blue: [
@@ -91,7 +91,7 @@ const Merch = () => {
             hasSizes: true,
             sizes: ["S", "M", "L", "XL"],
             defaultSize: "M",
-            colors: ["White", "Black", "Purple", "Blue"],
+            colors: ["Purple"],
             defaultColor: "Purple",
             images: {
                 Purple: [

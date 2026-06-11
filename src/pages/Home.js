@@ -6,7 +6,14 @@ const Home = ({ albums }) => {
   }
   return (
     <div className="home">
-      <h1>Zen Zinnati Albums</h1>
+      <h1>Zen Zinnati Music</h1>
+      <div className="home-header-img">
+        <img src="/covers/sub-header-option-3.jpg" alt="header" className="home-page-image" />
+      </div>
+      <div className="section-label">
+        Discography
+        <div className="section-divider" />
+      </div>
 
       <div className="album-grid">
         {albums.map((album) => (

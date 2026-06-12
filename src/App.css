@@ -148,12 +148,13 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #b3b3b3;
 }
 
 .section-divider {
   flex: 1;
   height: 0.5px;
-  background: white;
+  background: #b3b3b3;
 }
 
 .album-grid {

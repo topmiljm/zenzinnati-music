@@ -6,7 +6,10 @@ const Home = ({ albums }) => {
   }
   return (
     <div className="home">
-      <h1>Zen Zinnati Music</h1>
+      <div className="home-title">
+        <img src="/covers/Zen Zinnati title-option2.jpg" alt=''></img>
+        {/* <h1>Music</h1> */}
+      </div>
       <div className="home-header-img">
         <img src="/covers/sub-header-option-3.jpg" alt="header" className="home-page-image" />
       </div>

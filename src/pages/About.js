@@ -39,10 +39,12 @@ const About = () => {
         </NavLink>
         <div className="line-2"></div>
       </div>
-      <p className="inquiries">Inquiries:
-        <span style={{ color: '#b99f1d' }}> 1mntnjames@gmail.com </span>
-      </p>
-    </div>
+      <NavLink to="/contact" end>
+        <p className="inquiries">
+          <span style={{ color: '#b99f1d' }}> Contact Zen Zinnati </span>
+        </p>
+      </NavLink>
+    </div >
   );
 };
 

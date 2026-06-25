@@ -17,7 +17,7 @@ const Album = ({ albums, handlePlay, currentAlbum, currentIndex }) => {
   return (
     <div className="album-page">
       <div className="album-page-title">
-        <img src="/covers/Zen Zinnati title-option1.jpg" alt=''></img>
+        <img src="/covers/Zen-Zinnati-title-option1.jpg" alt=''></img>
         {/* <h1>Music</h1> */}
       </div>
       <img src={album.cover} alt={album.title} className="album-cover" />

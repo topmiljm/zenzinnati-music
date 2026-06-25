@@ -8,6 +8,7 @@ import Sidebar from "./components/Sidebar";
 import About from "./pages/About";
 import Merch from "./pages/Merch";
 import Success from "./pages/Success";
+import Contact from "./pages/Contact";
 
 import "./App.css";
 
@@ -71,6 +72,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home albums={albums} />} />
               <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="/merch" element={<Merch />} />
               <Route
                 path="/album/:id"

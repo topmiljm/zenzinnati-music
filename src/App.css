@@ -221,7 +221,7 @@ body {
 }
 
 .about-page a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   box-shadow: inset 0 0 20px rgba(29, 185, 84, 0.2);
 }
 
@@ -270,9 +270,126 @@ body {
   margin: 0 auto;
 }
 
-/* .inquiries:hover {
-  box-shadow: inset 0 0 10px #b99f1d;
+.inquiries span:hover {
+  box-shadow: inset 0 0 5px #b99f1d;
+}
+
+/* =====================
+   Contact Page
+   ===================== */
+
+.contact-page {
+  min-height: 100vh;
+  color: #b3b3b3;
+  padding: 25px 20px 0;
+}
+
+.contact-container {
+  max-width: 900px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 30px;
+}
+
+.contact-form p {
+  margin-bottom: 20px;
+}
+
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group span {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.field-group input,
+.field-group textarea {
+  width: 100%;
+  border: none;
+  background: #b3b3b3;
+  color: black;
+  font-size: 1rem;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid #1db954;
+}
+
+/* .field-group input:hover,
+.field-group textarea:hover {
+  border: 2px solid #1db954;
+
 } */
+
+.field-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-submit {
+  width: 160px;
+  height: 50px;
+  margin: 10px auto 5px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  border-radius: 10px;
+}
+
+.contact-submit:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+  opacity: 0.85;
+  color: #b99f1d;
+  border: solid 1px #b99f1d;
+}
+
+.contact-submit:active {
+  color: #1db954;
+  background: #333;
+  box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
+  border: solid 2px #aaa;
+}
+
+@media (max-width: 768px) {
+  .name-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+}
 
 /* ==================== ALBUM PAGE ==================== */
 .album-page {

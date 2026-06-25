@@ -39,13 +39,11 @@ export default function ContactPage() {
   }
   return (
     <>
-      <div className="about-page-img-wrapper">
-        <img className="about-page-img" src="/images/about-header-3.jpg" alt="" />
-      </div>
 
       <div className="contact-page">
+        <h1 className="contact-title">Contact</h1>
         <div className="contact-container">
-          <h1 className="contact-title">Contact</h1>
+
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-section">
               <p>* required field</p>
@@ -111,11 +109,6 @@ export default function ContactPage() {
               Submit
             </button>
           </form>
-
-          <div className="section-divider" />
-          <p className="shows-text">
-            <i>'lorem ipsum'</i>
-          </p>
         </div>
       </div>
     </>

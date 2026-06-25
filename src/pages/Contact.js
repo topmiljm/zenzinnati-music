@@ -13,7 +13,7 @@ export default function ContactPage() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await fetch('/api/contact', {
+    const response = await fetch('https://zenzinnati-music.onrender.com/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

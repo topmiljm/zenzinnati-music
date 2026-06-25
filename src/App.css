@@ -305,11 +305,11 @@ body {
   display: flex;
   flex-direction: column;
   gap: 36px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .contact-form p {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .name-row {

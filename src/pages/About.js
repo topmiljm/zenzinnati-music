@@ -23,12 +23,17 @@ const About = () => {
       </p>
 
       <p>
-        Follow on YouTube to check out other projects:
+        Follow along on YouTube and with other projects:
       </p>
       <ul>
         <li className="about-page-list">
           <a href="https://www.youtube.com/@ZenZinnati" target="_blank" rel="noreferrer">
             YouTube
+          </a>
+        </li>
+        <li className="about-page-list">
+          <a href="https://mntnjames-music.vercel.app/" target="_blank" rel="noreferrer">
+            MNTN James
           </a>
         </li>
       </ul>

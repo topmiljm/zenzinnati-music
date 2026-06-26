@@ -210,7 +210,7 @@ body {
 
 .about-page-list {
   max-width: 300px;
-  margin: 0 auto;
+  margin: 0 auto 15px;
   box-shadow: inset 0 0 10px rgba(29, 185, 84, 0.2);
   border-radius: 5px;
 }

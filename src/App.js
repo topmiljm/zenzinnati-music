@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Merch from "./pages/Merch";
 import Success from "./pages/Success";
 import Contact from "./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 import "./App.css";
 
@@ -49,7 +50,9 @@ function App() {
 
   return (
     <Router>
+
       <div className="layout">
+        <ScrollToTop />
         {isSidebarOpen && (
           <div className="overlay" onClick={closeSidebar}></div>
         )}
@@ -69,6 +72,7 @@ function App() {
         {/* NEW WRAPPER */}
         <div className="content">
           <div className="main">
+
             <Routes>
               <Route path="/" element={<Home albums={albums} />} />
               <Route path="/about" element={<About />} />

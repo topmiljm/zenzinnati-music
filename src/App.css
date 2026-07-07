@@ -128,6 +128,7 @@ body {
 
 .home-title img {
   width: 15rem;
+  border-radius: 20px;
 }
 
 .home-header-img {
@@ -409,6 +410,7 @@ body {
 
 .album-page-title img {
   width: 15rem;
+  border-radius: 20px;
 }
 
 .artist-name {

@@ -60,8 +60,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="field-group">
-                  <span>Last Name *</span>
-                  <input type="text" maxLength={50} required value={formData.lastName}
+                  <span>Last Name</span>
+                  <input type="text" maxLength={50} value={formData.lastName}
                     onChange={(e) =>
                       setFormData({
                         ...formData,

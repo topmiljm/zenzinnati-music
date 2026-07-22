@@ -19,6 +19,7 @@ A Frontend music streaming web app showcasing the discography of **Zen Zinnati**
 * 🎨 Per-product color and size selection with live image switching
 * 🛒 Persistent cart via localStorage
 * 📧 Automated order receipt emails via Stripe
+* ✉️ Contact form with email delivery via Resend
 
 ---
 
@@ -37,6 +38,7 @@ A Frontend music streaming web app showcasing the discography of **Zen Zinnati**
 * **Frontend:** React, React Router
 * **Backend:** Node.js, Express (hosted on Render)
 * **Payments:** Stripe (hosted checkout)
+* **Email:** Resend (order receipts + contact form)
 * **Data Source:** Local JSON (`/public/data/albums.json`)
 * **Hosting:** Vercel (frontend), Render (backend)
 * **Media Hosting:** Cloudinary + local assets
@@ -54,11 +56,11 @@ ZENZINNATI-MUSIC/
 │       └── albums.json # Main data source
 ├── src/
 │   ├── components/     # Player, UI components
-│   ├── pages/          # Album, About, Merch, Success, etc.
+│   ├── pages/          # Album, About, Merch, Contact, Success, etc.
 │   └── App.js
 ├── backend/
-│   ├── server.js       # Express server + Stripe checkout session
-│   └── .env            # STRIPE_SECRET_KEY (not committed)
+│   ├── server.js       # Express server + Stripe checkout + contact endpoint
+│   └── .env            # STRIPE_SECRET_KEY, RESEND_API_KEY, CONTACT_EMAIL (not committed)
 ├── scripts/
 │   └── generateAlbums.js
 ```
@@ -98,13 +100,59 @@ STRIPE_SECRET_KEY=sk_test_your_key_here
 
 The backend runs on `http://localhost:4000` by default.
 
-### Environment Variables
+---
+
+## ✉️ Contact Form
+
+A contact page lets visitors send a message directly to the artist without leaving the site.
+
+### Features
+- First name, last name, email, subject, and message fields
+- Submissions are emailed via [Resend](https://resend.com)
+- Reply-To is set to the sender's email, so replying goes straight back to them
+- Server-side success/error handling with basic status feedback on the frontend
+
+### How it works
+1. User fills out the form on the `/contact` page
+2. Frontend sends a POST request to the backend's `/api/contact` route
+3. Backend uses the Resend SDK to send a formatted HTML email to `CONTACT_EMAIL`
+4. Backend responds with a success or error status, which the frontend uses to show a confirmation or error message
+
+### API Route
+
+**POST** `/api/contact`
+
+Body:
+```json
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "jane@example.com",
+  "subject": "Booking inquiry",
+  "message": "Hi, I'd love to book Zen Zinnati for..."
+}
+```
+
+Response:
+```json
+{ "success": true }
+```
+
+---
+
+## Environment Variables
 
 **Frontend** (Vercel or `.env` in root):
+```
 REACT_APP_API_URL=http://localhost:4000
+```
 
 **Backend** (Render or `.env` in backend folder):
+```
 STRIPE_SECRET_KEY=sk_test_your_key_here
+RESEND_API_KEY=re_your_key_here
+CONTACT_EMAIL=you@example.com
+```
 
 ---
 
@@ -211,6 +259,7 @@ The project spans about a half decade of recordings, capturing a unique blend of
 ## 📬 Contact
 
 * email: 1mntnjames@gmail.com
+* or use the [contact form](https://zenzinnatimusic.vercel.app/contact) on the site
 
 ---
 

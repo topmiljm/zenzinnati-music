@@ -7,16 +7,16 @@ const Home = ({ albums }) => {
   return (
     <div className="home">
       <div className="home-title">
-        <img src="/covers/Zen-Zinnati-title-option2.jpg" alt=''></img>
-        {/* <h1>Music</h1> */}
+        {/* <img src="/covers/Zen-Zinnati-title-option2.jpg" alt=''></img> */}
+        <h1>Zen Zinnati Music</h1>
       </div>
-      <div className="home-header-img">
+      {/* <div className="home-header-img">
         <img src="/covers/sub-header-option-3.jpg" alt="header" className="home-page-image" />
-      </div>
-      <div className="section-label">
+      </div> */}
+      {/* <div className="section-label">
         Discography
         <div className="section-divider" />
-      </div>
+      </div> */}
 
       <div className="album-grid">
         {albums.map((album) => (

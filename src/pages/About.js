@@ -12,7 +12,7 @@ const About = () => {
         Zen Zinnati is a music production project of songwriter and musician MNTN James.
         Currently based in Los Angeles, CA, Zen Zinnati's roots are in Cincinnati, Ohio.
         Named after Cincinnati's world famous Octoberfest 'Zinzinnati' celebration and the Zen philosophy of mindfulness and simplicity,
-        Zen Zinnati's music is a blend of electronic, hip hop, indie, and experimental sounds sometimes crafted around unexpected and obscure samples.
+        Zen Zinnati's music is a blend of electronic, hip hop, indie, and experimental sounds often crafted around unexpected and obscure samples.
         Primarily active in the early 2010's, Zen Zinnati's discography includes 10 albums/mixtapes and a deep vault of unreleased instrumentals
         created over a span of about 5 years from 2010-2015.
       </p>

@@ -14,6 +14,8 @@ const Merch = () => {
 
     const [previewImage, setPreviewImage] = useState(null);
     const [cooldowns, setCooldowns] = useState({});
+    const [checkoutStatus, setCheckoutStatus] = useState('idle'); // idle | loading | slow | error
+
 
     const products = [
         {
@@ -134,6 +136,10 @@ const Merch = () => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }, [cartItems]);
 
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/health`).catch(() => { });
+    }, []);
+
     const addToCart = (product, size, color) => {
         setCartItems((prev) => {
             const existingItem = prev.find(
@@ -206,14 +212,24 @@ const Merch = () => {
     )
 
     const handleCheckout = async () => {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/create-checkout-session`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ cartItems }),
-        });
+        setCheckoutStatus('loading');
+        const slowTimer = setTimeout(() => setCheckoutStatus('slow'), 4000);
 
-        const { url } = await response.json();
-        window.location.href = url; // Redirect to Stripe's hosted checkout
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/create-checkout-session`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cartItems }),
+            });
+
+            const { url } = await response.json();
+            window.location.href = url; // Redirect to Stripe's hosted checkout
+        } catch (err) {
+            console.error(err);
+            setCheckoutStatus('error');
+        } finally {
+            clearTimeout(slowTimer);
+        }
     };
 
     return (
@@ -438,11 +454,20 @@ const Merch = () => {
                     <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
                     <button
                         className="checkout-button"
-                        disabled={cartItems.length === 0}
+                        disabled={cartItems.length === 0 || checkoutStatus === 'loading' || checkoutStatus === 'slow'}
                         onClick={handleCheckout}
                     >
-                        Checkout
+                        {checkoutStatus === 'loading' && 'Connecting...'}
+                        {checkoutStatus === 'slow' && 'Waking up server...'}
+                        {checkoutStatus === 'error' && 'Failed — try again'}
+                        {checkoutStatus === 'idle' && 'Checkout'}
                     </button>
+
+                    {checkoutStatus === 'slow' && (
+                        <p className="checkout-note">
+                            First checkout after inactivity can take up to 30 seconds — hang tight!
+                        </p>
+                    )}
                     <button
                         className="clear-cart-btn"
                         onClick={clearCart}

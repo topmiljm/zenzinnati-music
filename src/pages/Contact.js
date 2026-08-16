@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
+const API_URL = 'https://zenzinnati-music.onrender.com';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -10,36 +11,74 @@ export default function ContactPage() {
     message: '',
   });
 
+  // idle | loading | slow | success | error
+  const [status, setStatus] = useState('idle');
+  const slowTimerRef = useRef(null);
+
+  // Pre-warm the server as soon as the page loads
+  useEffect(() => {
+    fetch(`${API_URL}/api/health`).catch(() => { });
+  }, []);
+
   async function handleSubmit(e) {
     e.preventDefault();
+    setStatus('loading');
 
-    const response = await fetch('https://zenzinnati-music.onrender.com/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    // If it's still going after 4s, assume cold start and update the message
+    slowTimerRef.current = setTimeout(() => setStatus('slow'), 4000);
 
-    const data = await response.json();
-
-    if (data.success) {
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        subject: '',
-        message: '',
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      alert('Message sent!');
-    } else {
-      console.error(data);
-      alert('Failed to send message');
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        setStatus('success');
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        console.error(data);
+        setStatus('error');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    } finally {
+      clearTimeout(slowTimerRef.current);
     }
   }
+
+  const isSubmitting = status === 'loading' || status === 'slow';
+
+  function getButtonText() {
+    switch (status) {
+      case 'loading':
+        return 'Sending...';
+      case 'slow':
+        return 'Waking up the server, hang tight...';
+      case 'success':
+        return 'Sent! ✓';
+      case 'error':
+        return 'Failed — try again';
+      default:
+        return 'Submit';
+    }
+  }
+
   return (
     <>
-
       <div className="contact-page">
         <h1 className="contact-title">Contact</h1>
         <div className="contact-container">
@@ -105,9 +144,17 @@ export default function ContactPage() {
                 } />
             </div>
 
-            <button type="submit" className="contact-submit">
-              Submit
+            <button type="submit" className="contact-submit" disabled={isSubmitting}>
+              {isSubmitting && <span className="btn-spinner" />}
+              {getButtonText()}
             </button>
+
+            {status === 'slow' && (
+              <p className="submit-note">
+                Our server sleeps when idle to save costs — first request after a
+                while can take up to 30 seconds. Thanks for your patience!
+              </p>
+            )}
           </form>
         </div>
       </div>

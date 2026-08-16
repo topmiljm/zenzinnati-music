@@ -16,6 +16,11 @@ public/music/
 # production
 /build
 
+# server
+Server/node_modules
+Server/.env
+Server/build
+
 # misc
 .DS_Store
 .env.local
